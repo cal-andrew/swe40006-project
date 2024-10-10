@@ -1,3 +1,3 @@
 # SWE40006 Project
 
-`index.php` currently just contains a Calculator webapp as a place to get started from.
+This branch just contains a PHP Calculator web app for testing.
