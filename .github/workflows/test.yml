@@ -1,0 +1,46 @@
+name: Automated Testing Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run HTML Linter
+      run: |
+        npm install -g htmlhint
+        npx htmlhint index.html
+
+    - name: Run CSS Linter
+      run: |
+        npm install -g stylelint
+        npx stylelint "**/*.css"
+
+    - name: Build Docker Image (Optional)
+      run: docker build . -t test-image:${{ github.sha }}
+
+    - name: Run Unit Tests (if applicable)
+      run: npm test
+
+    - name: Verify Docker Image (Optional)
+      run: |
+        docker run --rm test-image:${{ github.sha }} some-command-to-verify
+
