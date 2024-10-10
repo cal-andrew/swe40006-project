@@ -1,0 +1,135 @@
+<!DOCTYPE html> 
+<html lang="en">
+
+
+<head>
+  <title>Bruno's Pizzeria</title>
+  <meta charset="utf-8" />
+  <meta name="description" content="a pizza website" />
+  <meta name="keywords" content="HTML5, CSS Media Query" />
+  <meta name="author" content="karthikeyan" /> 
+  <meta name="viewport" content="width=device-width, initial-scale =1.0"/>
+  <!--References to external basic CSS file-->
+  <link href="styles/main.css" rel="stylesheet"/>
+   <!---References to external Javascript file----->
+	
+ </head>
+ <!-------Header--------------->
+ <body id ="Home" >
+ <header>
+ <!------------------Navigation bar--->
+	<nav>
+		<div id="logo">
+			<img src="images\logo3.jpg" alt="logo">
+			</div>
+		<ul class="links">
+			<li><a data-active="Home" href="index.html">Home</a></li>
+			<li><a data-active="Registar" href="registration.html">Register</a></li>
+			<li><a data-active="Order" href="order.html">Order</a></li>
+			<li><a data-active="feature" href="features.html">Features</a></li>
+		</ul>
+		
+		<div id ="cart">
+		<img src="images\cart.png" alt ="cart">
+	</div>
+	</nav>
+</header>
+<main>
+	<!----------Banner-------------->
+	<section class="banner">
+	<div class="welcome">
+		<h1>ORDER AT BRUNO'S PIZZERIA</h1>
+		<p>The Best oven-baked pizza's With an italian touch </p>
+	</div>
+	</section>
+	<!------------------About us section--------------->
+	<section class="about">
+		<h2>About us</h2>
+		<p>Bruno's has been in the pizza business,since the mid 90s,Serving fresh stone-oven baked pizzas with italian origin<br>
+			We have just recently started an online aimming to reach more customers to share our pizzas with,
+			From the simple Margharita to the class smoked chicken to our special italia specializa,we all our customers savour our unique slices</p>
+	</section>
+	<!----------------------Pizza menue------------->
+	<section class ="menue">
+		<h2>Menue</h2>
+		<h4>Classic</h4>
+			<div id="row1">
+				<dl>
+					<div class="column"><dt><img src="images\pizza1.jpg" alt="Margerita"></dt><dd>Margerita<dd>
+					<form method="post">
+						<input class="btn" type="submit" value="Add to cart" name="add_to_cart">
+					</form>
+					</div>
+					
+					<div class="column"><dt><img src="images\pizza2.jpg" alt="POLLO astra(chicken)"></dt><dd>POLLO astra(chicken)<dd>
+					<form method="post">
+						<input class="btn" type="submit" value="Add to cart" name="add_to_cart">
+					</form>
+					</div>
+					
+					<div class="column"><dt><img src="images\pizza3.jpg" alt="POLLO pepperoni fiesta"></dt><dd>POLLO pepperoni fiesta<dd>
+					<form  method="post">
+						<input class="btn" type="submit" value="Add to cart" name="add_to_cart">
+					</form>
+					</div>
+				</dl>
+					</div>
+			<h4>Signature</h4>
+			<div id="row2">
+				<dl>
+					<div class="column"><dt><img src="images\pizza4.jpeg" alt="BBQ POLLO(chicken)"></dt><dd>BBQ POLLO(chicken)<dd>
+					<form  method="post">
+						<input class="btn" type="submit" value="Add to cart" name="add_to_cart">
+					</form>
+					</div>
+					
+					<div class="column"><dt><img src="images\pizza5.jpg" alt="Prawn Tonna(seafood)"></dt><dd>Prawn Tonna(seafood)<dd>
+					<form method="post">
+						<input class="btn" type="submit" value="Add to cart" name="add_to_cart">
+					</form>
+					</div>
+					
+					<div class="column"><dt><img src="images\pizza6.jpg" alt="Italia Specializa"></dt><dd>Italia Specializa<dd>
+					<form  method="post">
+						<input class="btn" type="submit" value="Add to cart" name="add_to_cart">
+					</form>
+					</div>
+				</dl>
+					</div>
+			<h4>Supreme</h4>
+			<div id="row3">
+				<dl>
+					<div class="column"><dt><img src="images\pizza7.jpeg" alt="Chicken Ultimo"></dt><dd>Chicken Ultimo<dd>
+					<form  method="post">
+						<input class="btn" type="submit" value="Add to cart" name="add_to_cart">
+					</form>
+					</div>
+					
+					<div class="column"><dt><img src="images\pizza8.jpg" alt="Chicken Hawian"></dt><dd>Chicken Hawian<dd>
+					<form  method="post">
+						<input class="btn" type="submit" value="Add to cart" name="add_to_cart">
+					</form>
+					</div>
+					
+					<div class="column"><dt><img src="images\pizza9.jpg" alt="Italia Supperbus"></dt><dd>Italia Supperbus<dd>
+					<form  method="post">
+						<input class="btn" type="submit" value="Add to cart" name="add_to_cart">
+					</form>
+					</div>
+				</dl>
+					</div>
+	</section>
+</main>
+	<!----------------Footer------------------>
+<footer>
+	<div class="footer">
+           <h4>Find Us on Social Media</h4>
+          <p>® 2023 Bruno's pizzeria, All rights reserved.</p>
+   </div>
+
+	
+</footer>
+<!---References to external Javascript file for feature1----->
+	<script src="feature.js"> </script>
+ </body>
+ </html>
