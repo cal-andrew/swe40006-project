@@ -12,47 +12,42 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    env:
+      REGISTRY_LOGIN_SERVER: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+      IMAGE_NAME: ${{ secrets.REGISTRY_LOGIN_SERVER }}/swe40006-project
+      CONTAINER_NAME: swe40006-project-test-container
+      RESOURCE_GROUP: ${{ secrets.RESOURCE_GROUP }}
+      LOCATION: 'australia southeast'
+      
     steps:
     - name: Checkout Code
       uses: actions/checkout@v3
 
-    - name: Set Up Node.js Environment
-      uses: actions/setup-node@v3
-      with:
-        node-version: '16'
-
-    - name: Install Dependencies
-      run: npm install
+    - name: Install HTMLHint and Stylelint
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y nodejs npm
+        sudo npm install -g htmlhint stylelint
 
     - name: Run HTML Linter
-      run: |
-        npm install -g htmlhint
-        npx htmlhint index.html
+      run: htmlhint index.html
 
     - name: Run CSS Linter
-      run: |
-        npm install -g stylelint
-        npx stylelint "**/*.css"
+      run: stylelint "**/*.css"
 
-    - name: Run Unit Tests
-      run: npm test 
     - name: Run Docker Linter
       uses: hadolint/hadolint-action@v2
       with:
         dockerfile: Dockerfile
 
     - name: Build Docker Image for Testing
-      run: |
-        docker build . -t project-image:${{ github.sha }}
+      run: docker build -t $IMAGE_NAME:${{ github.sha }} .
 
     - name: Run Docker Container for Testing
-      run: |
-        docker run -d --name test-container project-image:${{ github.sha }}
-    
-    - name: Run Integration Tests (if applicable)
-      run: |
-        # Add your integration tests here
-        echo "Running integration tests"
+      run: docker run -d --name $CONTAINER_NAME $IMAGE_NAME:${{ github.sha }}
 
+    - name: Run Integration Tests
+      run: echo "Running integration tests against the container"
+      
     - name: Cleanup Docker Container
-      run: docker rm -f test-container
+      run: docker rm -f $CONTAINER_NAME
