@@ -38,7 +38,7 @@ jobs:
       run: stylelint "**/*.css"
 
     - name: Run Docker Linter
-      uses: hadolint/hadolint-action@v1
+      uses: hadolint/hadolint-action@4b1c71a2178ae051b66fc28d76e003eadfe21553
       with:
         dockerfile: Dockerfile
 
