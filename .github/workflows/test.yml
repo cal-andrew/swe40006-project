@@ -32,6 +32,7 @@ jobs:
 
     - name: Install Dependencies for Stylelint
       run: |
+        sudo npm uninstall -g stylelint
         sudo apt-get update
         sudo apt-get install -y nodejs npm
         npm install stylelint@14 stylelint-config-standard@24 --save-dev
@@ -53,8 +54,8 @@ jobs:
     - name: Run HTML Linter
       run: npx htmlhint index.html
 
-    - name: Run CSS Linter with Auto-Fix
-      run: npx stylelint "**/*.css" --fix
+    - name: Run CSS Linter 
+      run: npx stylelint "**/*.css"
 
     - name: Run Docker Linter using Hadolint via Docker
       run: docker run --rm -i hadolint/hadolint < Dockerfile
