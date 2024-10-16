@@ -28,13 +28,13 @@ jobs:
     - name: Set up Node.js 20
       uses: actions/setup-node@v3
       with:
-        node-version: '20' 
+        node-version: '20'
 
     - name: Install HTMLHint and Stylelint
       run: |
         sudo apt-get update
         sudo apt-get install -y nodejs npm
-        sudo npm install -g htmlhint stylelint
+        sudo npm install -g htmlhint stylelint stylelint-config-standard # Install stylelint-config-standard
 
     - name: Run HTML Linter
       run: htmlhint index.html
