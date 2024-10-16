@@ -60,7 +60,7 @@ nav ul li a {
 	font-size: 5em;
 	font-weight: bold;
 	text-align: center;
-	color: red;
+	color: black;
 	text-decoration: underline;
 }
 
@@ -68,7 +68,7 @@ nav ul li a {
 	font-size: 1.8em;
 	font-weight: bold;
 	text-align: center;
-	color: blue;
+	color: black;
 }
 
 .about {
