@@ -10,8 +10,7 @@
 
 header {
 	width: 100%;
-	height: 60px;
-	background-color: #0d6346;
+	background-color: #211720;
 	box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -36,11 +35,11 @@ nav ul li {
 }
 
 nav ul li a {
-	font-family: sans-serif;
+	font-family: 'Calibri', sans-serif;
 	font-weight: bold;
 	padding: 0 30px;
 	text-decoration: none;
-	color: white;
+	color: #FDFDFD;
 }
 
 #cart img {
@@ -50,17 +49,17 @@ nav ul li a {
 
 #logo img {
 	float: left;
-	height: 80px;
-	padding-bottom: 5px;
+	width: 8%;
+	/* padding-bottom: 5%; */
 }
 
 .banner {
-	/* background-image: url("banner.jpg"); */
-	/* width: 100%;
-	height: 540px; */
+	/* background-image: url("banner.jpg");
+	width: 100%;
+	height: 540px;
 	background-size: cover;
 	background-position: center;
-	background-repeat: no-repeat;
+	background-repeat: no-repeat; */
 }
 
 .welcome h1 {
@@ -108,7 +107,7 @@ nav ul li a {
 	font-size: 28px;
 	color: black;
 	font-weight: bold;
-	font-family: italic, sans-serif; /* Fixed generic fallback */
+	font-family: 'Calibri', sans-serif;
 	line-height: 22px;
 	padding: 10px;
 }
@@ -118,7 +117,7 @@ nav ul li a {
 	margin: auto;
 	text-align: center;
 	padding: 50px 0;
-	background-color: #FFF8DC;
+	background-color: #fdfdfd;
 }
 
 .menue h2 {
@@ -165,8 +164,8 @@ nav ul li a {
 	border-radius: 8px;
 	padding: 10px 30px;
 	font-size: 18px;
-	color: white;
-	background-color: green;
+	color: 253, 253, 253;
+	background-color: #AF9867;
 	cursor: pointer;
 }
 
@@ -184,7 +183,7 @@ nav ul li a {
 	margin-bottom: 20px;
 	font-size: 20px;
 	font-weight: bold;
-	color: white;
+	color: #FDFDFD;
 	padding-top: 30px;
 }
 
@@ -192,7 +191,7 @@ nav ul li a {
 	text-align: center;
 	font-size: 16px;
 	padding: 40px;
-	color: white;
+	color: #FDFDFD;
 }
 
 /* Registration Page CSS */
@@ -212,7 +211,7 @@ nav ul li a {
 	flex: 1 1 40rem;
 	border-radius: 100px;
 	padding: 30px 20px;
-	background-color: #FFF8DC;
+	background-color: #FDFDFD;
 }
 
 .form h2 {
@@ -227,8 +226,8 @@ nav ul li a {
 	border-radius: 20px;
 	padding: 10px 12px;
 	font-size: 16px;
-	background-color: #FAF0E6;
-	color: black;
+	background-color: #FDFDFD;
+	color: #211720;
 }
 
 .form .btn {
@@ -238,7 +237,7 @@ nav ul li a {
 label {
 	font-size: 16px;
 	font-weight: bold;
-	font-family: 'Calibri', sans-serif; /* Fixed generic fallback */
+	font-family: 'Calibri', sans-serif;
 	padding: 10px;
 }
 
@@ -267,7 +266,7 @@ nav a.active {
 /* Features page CSS */
 
 #wall3 {
-	background-color: #FFF8DC;
+	background-color: #FDFDFD;
 	min-height: 1000px;
 	background-size: cover;
 }
@@ -276,7 +275,7 @@ nav a.active {
 	margin-left: 1em;
 	padding: 10px 20px;
 	text-align: center;
-	font-family: 'Arial', sans-serif; /* Fixed generic fallback */
+	font-family: 'Calibri', sans-serif;
 	font-size: 40px;
 	font-weight: bold;
 }
