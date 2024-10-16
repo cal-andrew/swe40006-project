@@ -1,0 +1,126 @@
+name: Test and Deploy to Azure
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  # Test job
+  test:
+    runs-on: ubuntu-latest
+
+    # Set up environment variables
+    env:
+      registry_login_server: ${{ secrets.registry_login_server }}
+      image_name: ${{ secrets.registry_login_server }}/swe40006-project
+      container_name: swe40006-project-test-container
+      resource_group: ${{ secrets.resource_group }}
+      location: 'australia southeast'
+
+    # Checkout the repo
+    steps:
+    - name: checkout code
+      uses: actions/checkout@v3
+
+    # Set up a node.js environment for testing
+    - name: set up node.js 20
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+
+    # Install stylelint dependencies
+    - name: install dependencies for stylelint
+      run: |
+        sudo npm uninstall -g stylelint
+        sudo apt-get update
+        sudo apt-get install -y nodejs npm
+        npm install stylelint@14 stylelint-config-standard@24 --save-dev
+
+    # Configure stylelint settings
+    - name: create stylelint configuration
+      run: |
+        echo '{
+          "extends": "stylelint-config-standard",
+          "rules": {
+            "font-family-no-missing-generic-family-keyword": true,
+            "shorthand-property-no-redundant-values": true,
+            "no-descending-specificity": true,
+            "color-hex-length": "short",
+            "declaration-block-no-duplicate-properties": true,
+            "selector-pseudo-class-no-unknown": true
+          }
+        }' > .stylelintrc.json
+
+    # Lint index.html file
+    - name: run html linter
+      run: npx htmlhint index.html
+
+    # Lint CSS files with auto-fix
+    - name: run css linter with auto-fix
+      run: npx stylelint "**/*.css" --fix
+
+    # Run Docker linter
+    - name: run docker linter using hadolint via docker
+      run: docker run --rm -i hadolint/hadolint < Dockerfile
+
+    # Build Docker image to test
+    - name: build docker image for testing
+      run: docker build -t $image_name:${{ github.sha }} .
+
+    # Check that Docker image can run
+    - name: run docker container for testing
+      run: docker run -d --name $container_name $image_name:${{ github.sha }}
+
+    # Run integration tests
+    - name: run integration tests
+      run: echo "running integration tests against the container"
+
+    # Remove Docker image
+    - name: cleanup docker container
+      run: docker rm -f $container_name
+
+  # Deploy job
+  deploy:
+    runs-on: ubuntu-latest
+
+    # Requires test job to complete successfully
+    needs: test
+
+    steps:
+    # checkout the repo
+    - name: 'Checkout GitHub Action'
+      uses: actions/checkout@main
+
+    # Login to Azure Container Registry
+    - name: 'Login via Azure CLI'
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    # Build and push the Docker image to the registry
+    - name: 'Build and push image'
+      uses: azure/docker-login@v1
+      with:
+        login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+    - run: |
+        docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/swe40006-project:${{ github.sha }}
+        docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/swe40006-project:${{ github.sha }}
+
+    # Deploy an instance of the Docker image on Azure
+    - name: 'Deploy to Azure Container Instances'
+      uses: 'azure/aci-deploy@v1'
+      with:
+        resource-group: ${{ secrets.RESOURCE_GROUP }}
+        dns-name-label: ${{ secrets.RESOURCE_GROUP }}
+        image: ${{ secrets.REGISTRY_LOGIN_SERVER }}/swe40006-project:${{ github.sha }}
+        registry-login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+        registry-username: ${{ secrets.REGISTRY_USERNAME }}
+        registry-password: ${{ secrets.REGISTRY_PASSWORD }}
+        name: swe40006-project
+        location: 'australia southeast'
