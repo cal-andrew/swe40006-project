@@ -59,7 +59,7 @@ jobs:
 
     # Run Docker linter
     - name: run docker linter using hadolint via docker
-      run: docker run --rm -i hadolint/hadolint < dockerfile
+      run: docker run --rm -i hadolint/hadolint < Dockerfile
 
     # Build Docker image to test
     - name: build docker image for testing
