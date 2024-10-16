@@ -54,8 +54,8 @@ jobs:
     - name: Run HTML Linter
       run: npx htmlhint index.html
 
-    - name: Run CSS Linter 
-      run: npx stylelint "**/*.css"
+    - name: Run CSS Linter with Auto-Fix
+      run: npx stylelint "**/*.css" --fix
 
     - name: Run Docker Linter using Hadolint via Docker
       run: docker run --rm -i hadolint/hadolint < Dockerfile
