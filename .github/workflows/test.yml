@@ -30,14 +30,11 @@ jobs:
       with:
         node-version: '20'
 
-    - name: Install HTMLHint, Stylelint, and stylelint-config-standard globally
+    - name: Install HTMLHint and Stylelint Locally
       run: |
         sudo apt-get update
         sudo apt-get install -y nodejs npm
-        sudo npm install -g htmlhint stylelint stylelint-config-standard
-
-    - name: Create Stylelint Configuration
-      run: |
+        npm install stylelint stylelint-config-standard --save-dev
         echo '{
           "extends": "stylelint-config-standard",
           "rules": {
@@ -48,10 +45,10 @@ jobs:
         }' > .stylelintrc.json
 
     - name: Run HTML Linter
-      run: htmlhint index.html
+      run: npx htmlhint index.html
 
     - name: Run CSS Linter
-      run: stylelint "**/*.css"
+      run: npx stylelint "**/*.css"
 
     - name: Run Docker Linter using Hadolint via Docker
       run: docker run --rm -i hadolint/hadolint < Dockerfile
