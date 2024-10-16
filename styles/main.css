@@ -5,7 +5,13 @@
 	margin: 0;
 	padding: 0;
 }
+h2 {
+	padding-top: 5%;
+	text-align: center;
+	font-size: 3em;
+	text-decoration: underline;
 
+}
 /* Index page CSS */
 
 header {
@@ -273,13 +279,6 @@ section.menu {
 	padding-bottom: 5%;
 }
 
-h2 {
-	padding-top: 5%;
-	text-align: center;
-	font-size: 3em;
-	text-decoration: underline;
-
-}
 
 .menu-subheader {
 	margin-left: 12%;
