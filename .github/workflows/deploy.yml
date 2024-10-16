@@ -1,9 +1,7 @@
 on:
   workflow_run:
-    workflows: ['test']
+    workflows: [Test and Validation Deployment]
     types: [completed]
-    branches:
-      - 'master'
 name: Deploy to Azure CR
 
 jobs:
