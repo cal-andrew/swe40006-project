@@ -23,8 +23,6 @@ nav {
 }
 
 nav ul {
-	padding-top: 20px;
-	padding-bottom: 20px;
 	display: flex;
 }
 
@@ -35,7 +33,6 @@ nav ul li {
 }
 
 nav ul li a {
-	font-family: 'Calibri', sans-serif;
 	font-weight: bold;
 	padding: 0 30px;
 	text-decoration: none;
@@ -63,23 +60,19 @@ nav ul li a {
 }
 
 .welcome h1 {
-	font-size: 60px;
-	font-family: 'Calibri', sans-serif;
+	padding-top: 2%;
+	font-size: 5em;
 	font-weight: bold;
-	line-height: 150px;
 	text-align: center;
 	color: black;
-	padding-top: 60px;
+	text-decoration: underline;
 }
 
 .welcome p {
-	font-size: 40px;
-	font-family: 'Calibri', sans-serif; /* Fixed generic fallback */
+	font-size: 1.8em;
 	font-weight: bold;
-	line-height: 60px;
 	text-align: center;
 	color: black;
-	padding-top: 20px;
 }
 
 .about {
@@ -107,7 +100,6 @@ nav ul li a {
 	font-size: 28px;
 	color: black;
 	font-weight: bold;
-	font-family: 'Calibri', sans-serif;
 	line-height: 22px;
 	padding: 10px;
 }
@@ -139,8 +131,9 @@ nav ul li a {
 
 #row1 dl, #row2 dl, #row3 dl {
 	display: flex;
-	margin-top: 3%;
-	margin-right: 3%;
+	margin-top: 1.5%;
+	margin-right: 10%;
+	margin-left: 10%;
 	justify-content: space-between;
 	padding: 0 30px;
 }
@@ -175,7 +168,7 @@ nav ul li a {
 
 .footer {
 	width: 100%;
-	background-color: black;
+	background-color: #211720;
 }
 
 .footer h4 {
@@ -237,7 +230,6 @@ nav ul li a {
 label {
 	font-size: 16px;
 	font-weight: bold;
-	font-family: 'Calibri', sans-serif;
 	padding: 10px;
 }
 
@@ -251,16 +243,9 @@ label {
 	padding-left: 20px;
 }
 
-/* #wall {
-	background-image: url("banner.jpg");
-	background-size: cover;
-	height: 1000px;
-	position: relative;
-} */
-
 nav a:hover,
 nav a.active {
-	color: black;
+	color: #211720;
 }
 
 /* Features page CSS */
@@ -275,7 +260,6 @@ nav a.active {
 	margin-left: 1em;
 	padding: 10px 20px;
 	text-align: center;
-	font-family: 'Calibri', sans-serif;
 	font-size: 40px;
 	font-weight: bold;
 }
@@ -283,4 +267,26 @@ nav a.active {
 #wall3 p {
 	padding: 20px 30px 30px 20px;
 	font-size: 20px;
+}
+
+section.menu {
+	padding-bottom: 5%;
+}
+
+h2 {
+	padding-top: 5%;
+	text-align: center;
+	font-size: 3em;
+	text-decoration: underline;
+
+}
+
+.menu-subheader {
+	margin-left: 12%;
+	padding-top: 2%;
+	font-size: 2em;
+}
+
+#row1, #row2, #row3 {
+	padding-bottom: 3%;
 }
